@@ -7,7 +7,7 @@ export const Header = () => {
     <Box component="header" sx={{ py: 2 }}>
       <Container maxWidth="lg">
         <Typography component="h1" variant="h4">
-          Helpscout Helper
+          Help Scout Helper
         </Typography>
       </Container>
     </Box>

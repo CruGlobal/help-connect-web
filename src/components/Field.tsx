@@ -15,11 +15,28 @@ interface FieldProps {
   field: FieldType;
 }
 
+// Return false if the value is invalid
+const validate = (value: unknown, field: FieldType): boolean => {
+  if (!field.required) {
+    return true;
+  }
+  if (field.type === "file") {
+    return value instanceof FileList && value.length > 0;
+  }
+  if (field.type === "number" && value === 0) {
+    return true;
+  }
+  if (field.type === "static") {
+    return true;
+  }
+  return !value;
+};
+
 export const Field: React.FC<FieldProps> = ({ field }) => {
-  const [fieldProps, meta] = useField({
+  const [fieldProps, meta, helpers] = useField({
     name: field.id.toString(),
     validate: (value) =>
-      value || value === 0 ? undefined : "This field is required",
+      validate(value, field) ? undefined : "This field is required",
   });
   const helperText =
     meta.error && meta.touched ? meta.error : field.description;
@@ -61,6 +78,11 @@ export const Field: React.FC<FieldProps> = ({ field }) => {
           shrink: true,
         }}
         {...fieldProps}
+        // Formik doesn't support image uploads, so manually manage value and onChange
+        onChange={(event) => {
+          helpers.setValue(event.currentTarget.files);
+        }}
+        value={undefined}
       />
     );
   } else if (field.type === "number") {

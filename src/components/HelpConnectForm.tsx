@@ -1,10 +1,10 @@
-import { Formik, Form } from "formik";
-import { ReactElement } from "react";
-import { UserInfo } from "./UserInfo";
-import { Projects } from "./Projects";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import { Form, Formik } from "formik";
+import { TaskForm } from "./TaskForm";
+import { task } from "../mocks";
 
-export const HelpConnectForm = () => {
+export const HelpConnectForm: React.FC = () => {
   const onSubmit = async (attributes: any) => {
     // Send form to WP
     console.log("attributes", attributes);
@@ -15,22 +15,31 @@ export const HelpConnectForm = () => {
       initialValues={{
         projectId: "",
         taskId: "",
+        ...Object.fromEntries(
+          task.fields.map((field) => [
+            field.id,
+            field.type === "datetime" ? new Date().toISOString() : "",
+          ]),
+        ),
       }}
       onSubmit={onSubmit}
+      validateOnMount
     >
-      {({
-        handleSubmit,
-        setFieldValue,
-        handleChange,
-        isSubmitting,
-        isValid,
-        errors,
-      }): ReactElement => (
+      {({ isValid }) => (
         <Container>
-          <Form>
-            <UserInfo />
-            <Projects />
-            <button type="submit">Submit</button>
+          <Form
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: "20em",
+              gap: "2em",
+              padding: "1em",
+            }}
+          >
+            <TaskForm task={task} />
+            <Button type="submit" disabled={!isValid}>
+              Submit
+            </Button>
           </Form>
         </Container>
       )}

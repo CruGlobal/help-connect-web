@@ -1,20 +1,20 @@
-import { Formik, Form } from 'formik';
-import { ReactElement } from 'react';
-import { Projects } from './Projects';
-import Paper from '@mui/material/Paper';
+import { Formik, Form } from "formik";
+import { ReactElement } from "react";
+import { UserInfo } from "./UserInfo";
+import { Projects } from "./Projects";
+import Container from "@mui/material/Container";
 
 export const HelpConnectForm = () => {
-
   const onSubmit = async (attributes: any) => {
     // Send form to WP
-    console.log('attributes', attributes)
+    console.log("attributes", attributes);
   };
 
   return (
     <Formik
       initialValues={{
-        projectId: '',
-        taskId: '',
+        projectId: "",
+        taskId: "",
       }}
       onSubmit={onSubmit}
     >
@@ -26,13 +26,14 @@ export const HelpConnectForm = () => {
         isValid,
         errors,
       }): ReactElement => (
-        <Paper elevation={3} square={false}>
+        <Container>
           <Form>
+            <UserInfo />
             <Projects />
             <button type="submit">Submit</button>
           </Form>
-        </Paper>
+        </Container>
       )}
     </Formik>
-  )
-}
+  );
+};

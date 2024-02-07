@@ -19,6 +19,15 @@ export const projects: Project[] = [
       202: "Designation editor",
     },
   },
+  {
+    id: 3,
+    name: "Wordpress",
+    task_list: {
+      300: "Login issues",
+      301: "Admin issues",
+      302: "FL OKr Project Creation",
+    },
+  },
 ];
 
 export const task: TaskInfoResponse = {

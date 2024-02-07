@@ -38,12 +38,6 @@ export const task: TaskInfoResponse = {
     },
     {
       id: 1002,
-      label: "Checkbox",
-      type: "checkbox",
-      required: false,
-    },
-    {
-      id: 1003,
       label: "Can you upload a screenshot?",
       type: "file",
       required: false,
@@ -51,17 +45,23 @@ export const task: TaskInfoResponse = {
       mime_type: "image/*",
     },
     {
-      id: 1004,
+      id: 1003,
       label: "How many times did you try?",
       type: "number",
       required: false,
     },
     {
-      id: 1005,
+      id: 1004,
       label: "Choose an option",
       type: "select",
       required: false,
       options: ["Item 1", "Item 2", "Item 3"],
+    },
+    {
+      id: 1005,
+      label: "Choose an option",
+      type: "static",
+      required: false,
     },
     {
       id: 1006,

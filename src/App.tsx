@@ -1,19 +1,25 @@
+import {
+    QueryClient,
+    QueryClientProvider,
+} from '@tanstack/react-query'
+import { Login } from './components/Login';
+import { Form } from './components/Form';
 import "./App.css";
 
-export const App: React.FC = () => (
-  <div className="App">
-    <header className="App-header">
-      <p>
-        Edit <code>src/App.js</code> and    save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+const queryClient = new QueryClient()
+
+export const App: React.FC = () => {
+    const queryParameters = new URLSearchParams(window.location.search)
+    const isLoggedIn = queryParameters.get("isLoggedIn")
+
+    return (
+        <QueryClientProvider client={queryClient}>
+            {isLoggedIn === 'true' &&
+                <Form />
+            }
+            {isLoggedIn !== 'true' &&
+                <Login />
+            }
+        </QueryClientProvider>
+    )
+}

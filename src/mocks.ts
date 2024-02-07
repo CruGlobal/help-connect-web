@@ -59,7 +59,7 @@ export const task: TaskInfoResponse = {
     },
     {
       id: 1005,
-      label: "Choose an option",
+      label: "Here are some important instructions",
       type: "static",
       required: false,
     },
@@ -69,12 +69,6 @@ export const task: TaskInfoResponse = {
       type: "string",
       required: false,
       multiline: false,
-    },
-    {
-      id: 1007,
-      label: "Here are some important instructions",
-      type: "static",
-      required: false,
     },
   ],
 };

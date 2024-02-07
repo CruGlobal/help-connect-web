@@ -79,5 +79,12 @@ export const task: TaskInfoResponse = {
       required: true,
       multiline: false,
     },
+    {
+      id: 1007,
+      label: "Please describe your error",
+      type: "string",
+      required: true,
+      multiline: true,
+    },
   ],
 };

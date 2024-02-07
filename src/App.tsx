@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Login } from "./components/Login";
-import { Form } from "./components/Form";
+import { HelpConnectForm } from "./components/HelpConnectForm";
+import { Header } from "./components/Header";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -11,7 +12,8 @@ export const App: React.FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {isLoggedIn === "true" && <Form />}
+      <Header />
+      {isLoggedIn === "true" && <HelpConnectForm />}
       {isLoggedIn !== "true" && <Login />}
     </QueryClientProvider>
   );

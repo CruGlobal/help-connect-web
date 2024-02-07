@@ -19,6 +19,15 @@ export const projects: Project[] = [
       202: "Designation editor",
     },
   },
+  {
+    id: 3,
+    name: "Wordpress",
+    task_list: {
+      300: "Login issues",
+      301: "Admin issues",
+      302: "FL OKr Project Creation",
+    },
+  },
 ];
 
 export const task: TaskInfoResponse = {
@@ -38,12 +47,6 @@ export const task: TaskInfoResponse = {
     },
     {
       id: 1002,
-      label: "Checkbox",
-      type: "checkbox",
-      required: false,
-    },
-    {
-      id: 1003,
       label: "Can you upload a screenshot?",
       type: "file",
       required: false,
@@ -51,17 +54,23 @@ export const task: TaskInfoResponse = {
       mime_type: "image/*",
     },
     {
-      id: 1004,
+      id: 1003,
       label: "How many times did you try?",
       type: "number",
       required: false,
     },
     {
-      id: 1005,
+      id: 1004,
       label: "Choose an option",
       type: "select",
       required: false,
       options: ["Item 1", "Item 2", "Item 3"],
+    },
+    {
+      id: 1005,
+      label: "Here are some important instructions",
+      type: "static",
+      required: false,
     },
     {
       id: 1006,
@@ -69,12 +78,6 @@ export const task: TaskInfoResponse = {
       type: "string",
       required: false,
       multiline: false,
-    },
-    {
-      id: 1007,
-      label: "Here are some important instructions",
-      type: "static",
-      required: false,
     },
   ],
 };

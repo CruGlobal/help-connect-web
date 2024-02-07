@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Login } from "./components/Login";
 import { Form } from "./components/Form";
+import { Header } from "./components/Header";
 import "./App.css";
-import { Header } from "./Header";
 
 const queryClient = new QueryClient();
 

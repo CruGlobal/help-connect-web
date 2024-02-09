@@ -16,6 +16,11 @@ export interface Project {
   task_list: Record<number, string>;
 }
 
+export interface TaskList { 
+  id: string;
+  label: string;
+}
+
 export interface TaskInfoResponse {
   task_id: number;
   fields: Field[];

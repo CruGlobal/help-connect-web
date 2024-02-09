@@ -1,7 +1,7 @@
-import React from "react";
+import {FC} from "react";
 import { Button, Dialog } from "@mui/material";
 
-export const Login: React.FC = () => {
+export const Login: FC = () => {
   return (
     <Dialog open={true}>
       <Button

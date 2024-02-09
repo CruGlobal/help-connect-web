@@ -2,6 +2,7 @@ import { Formik, Form } from 'formik';
 import { ReactElement } from 'react';
 import { Projects } from './Projects';
 import Paper from '@mui/material/Paper';
+import { Box, Button } from '@mui/material';
 
 export const HelpConnectForm = () => {
 
@@ -26,12 +27,16 @@ export const HelpConnectForm = () => {
         isValid,
         errors,
       }): ReactElement => (
-        <Paper elevation={3} square={false}>
-          <Form>
-            <Projects />
-            <button type="submit">Submit</button>
-          </Form>
-        </Paper>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Paper elevation={3} square={false} sx={{maxWidth:"600px", width: '100%', padding: 2 }}>
+            <Form>
+              <Projects />
+              <Box sx={{display: 'flex', justifyContent: 'end'}}>
+                <Button type="submit" variant="contained" color="success">Submit</Button>
+              </Box>
+            </Form>
+          </Paper>
+        </Box>
       )}
     </Formik>
   )

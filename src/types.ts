@@ -16,7 +16,7 @@ export interface Project {
   task_list: Record<number, string>;
 }
 
-export interface TaskList { 
+export interface TaskList {
   id: string;
   label: string;
 }

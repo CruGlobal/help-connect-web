@@ -1,4 +1,4 @@
-import {FC} from "react";
+import { FC } from "react";
 import { Button, Dialog } from "@mui/material";
 
 export const Login: FC = () => {

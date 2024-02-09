@@ -13,7 +13,8 @@
   },
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "prettier:write": "prettier . --write"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

@@ -1,10 +1,13 @@
-import { Formik, Form } from "formik";
 import { ReactElement } from "react";
+import { Formik, Form } from "formik";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
 import { Projects } from "./Projects";
-import Paper from "@mui/material/Paper";
-import { Box, Button } from "@mui/material";
+import { TaskForm } from "./TaskForm";
+import { task } from "../mocks";
 
-export const HelpConnectForm = () => {
+export const HelpConnectForm: React.FC = () => {
   const onSubmit = async (attributes: any) => {
     // Send form to WP
     console.log("attributes", attributes);
@@ -15,33 +18,31 @@ export const HelpConnectForm = () => {
       initialValues={{
         projectId: "",
         taskId: "",
+        ...Object.fromEntries(
+          task.fields.map((field) => [
+            field.id,
+            field.type === "datetime" ? new Date().toISOString() : "",
+          ]),
+        ),
       }}
       onSubmit={onSubmit}
+      validateOnMount
     >
       {({
-        handleSubmit,
-        setFieldValue,
-        handleChange,
         isSubmitting,
         isValid,
-        errors,
       }): ReactElement => (
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Paper
-            elevation={3}
-            square={false}
-            sx={{ maxWidth: "600px", width: "100%", padding: 2 }}
-          >
-            <Form>
-              <Projects />
-              <Box sx={{ display: "flex", justifyContent: "end" }}>
-                <Button type="submit" variant="contained" color="success">
-                  Submit
-                </Button>
-              </Box>
-            </Form>
-          </Paper>
-        </Box>
+        <Container>
+          <Form>
+            <Projects />
+            <TaskForm task={task} />
+            <Box sx={{ display: "flex", justifyContent: "end" }}>
+              <Button type="submit" variant="contained" color="success"  disabled={!isValid || isSubmitting}>
+                Submit
+              </Button>
+            </Box>
+          </Form>
+        </Container>
       )}
     </Formik>
   );
